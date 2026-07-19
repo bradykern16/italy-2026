@@ -4,172 +4,307 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Italy Itinerary & Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --text-color: #2d3748;
-            --primary: #1a365d;
-            --accent-wedding: #7b341e;
-            --accent-travel: #2b6cb0;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --action-needed: #fffaf0;
-            --action-border: #feebc8;
-            --action-text: #c05621;
+            /* Italian Color Palette */
+            --green-italy: #009246;
+            --white-italy: #FFFFFF;
+            --red-italy: #CE2B37;
+            --gold: #D4AF37;
+            --deep-navy: #1a3a52;
+            --terra-cotta: #b8623b;
+            --light-cream: #fef9f3;
+            --border-light: #e8dcc8;
+            --text-dark: #2d2416;
+            --accent-silver: #c0c0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--light-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
         }
 
+        /* Header - Italian Flag Inspired */
         header {
-            background: linear-gradient(135deg, #1a365d 0%, #2a4365 100%);
-            color: white;
+            background: linear-gradient(90deg, var(--green-italy) 0%, var(--green-italy) 33.33%, var(--white-italy) 33.33%, var(--white-italy) 66.66%, var(--red-italy) 66.66%, var(--red-italy) 100%);
+            color: var(--text-dark);
+            padding: 3rem 1rem;
             text-align: center;
-            padding: 4rem 1rem;
+            border-bottom: 4px solid var(--gold);
         }
 
-        header h1 { margin: 0; font-size: 2.3rem; letter-spacing: -1px; }
-        header p { margin: 0.5rem 0 1.5rem 0; font-size: 1.1rem; opacity: 0.9; }
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--deep-navy);
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--deep-navy);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
 
         #countdown {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--gold);
             display: inline-block;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            backdrop-filter: blur(5px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--deep-navy);
         }
 
         .container {
-            max-width: 800px;
-            margin: -1.5rem auto 4rem auto;
-            padding: 0 1rem;
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
-        /* Modular Day Blocks */
-        .day-block {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.75rem;
+        /* Section Headers */
+        .section-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--green-italy);
+            margin-top: 3rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-            border: 1px solid var(--border);
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Day Blocks */
+        .day-block {
+            background: var(--white-italy);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            border-left: 5px solid var(--green-italy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .day-block:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .day-block.wedding {
+            border-left: 5px solid var(--red-italy);
+            background: linear-gradient(135deg, var(--white-italy) 0%, rgba(206, 43, 55, 0.02) 100%);
+        }
+
+        .day-block.transit {
+            border-left: 5px solid var(--terra-cotta);
         }
 
         .day-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--bg-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-light);
+            gap: 1rem;
+        }
+
+        .day-title-section {
+            flex: 1;
         }
 
         .day-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            margin: 0 0 0.5rem 0;
         }
 
-        .day-label {
-            background: #ebf8ff;
-            color: #2b6cb0;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
+        .day-details {
+            font-size: 0.85rem;
+            color: var(--terra-cotta);
+            font-weight: 600;
+            line-height: 1.5;
         }
 
-        .day-block.wedding-theme {
-            border-left: 5px solid var(--accent-wedding);
-        }
-        .day-block.wedding-theme .day-label {
-            background: #fff5f5;
-            color: #9b2c2c;
-        }
-
-        .details-box {
-            background: #f8fafc;
-            border: 1px solid #edf2f7;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-top: 0.75rem;
-            font-size: 0.95rem;
-        }
-
-        .action-banner {
-            background-color: var(--action-needed);
-            border: 1px solid var(--action-border);
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: var(--action-text);
+        .day-details div {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .timeline-substep {
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--border);
-        }
-        .timeline-substep strong {
-            color: var(--text-color);
+        .day-label {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--deep-navy);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
+        .day-block.wedding .day-label {
+            background-color: var(--red-italy);
+            color: var(--white-italy);
+        }
+
+        /* Detail Boxes */
+        .details-box {
+            background: var(--light-cream);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Timeline Steps */
+        .timeline-substep {
+            margin-bottom: 1rem;
+            padding-left: 1.25rem;
+            border-left: 3px solid var(--gold);
+            position: relative;
+        }
+
+        .timeline-substep:before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--white-italy);
+        }
+
+        .timeline-substep strong {
+            color: var(--deep-navy);
+            font-weight: 600;
+        }
+
+        /* Action Banners */
+        .action-banner {
+            background-color: #fff8e7;
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--terra-cotta);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .action-banner strong {
+            color: var(--terra-cotta);
+        }
+
+        /* Badge Styling */
         .badge-attire {
             display: inline-block;
-            background: #edf2f7;
-            color: #4a5568;
-            padding: 0.15rem 0.5rem;
+            background: var(--terra-cotta);
+            color: var(--white-italy);
+            padding: 0.35rem 0.75rem;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Descriptive paragraphs */
+        .day-block > p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .day-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .day-title {
+                font-size: 1.25rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Italy Itinerary & Wedding</h1>
-        <p>Philly Departure • Florence • Umbria • Venice</p>
-        <div id="countdown">Calculating travel window...</div>
+        <h1>🇮🇹 Italy Itinerary & Wedding</h1>
+        <p>Philadelphia • Florence • Umbria • Venice</p>
+        <div id="countdown">Calculating departure countdown...</div>
     </header>
 
     <div class="container">
 
+        <!-- TRAVEL SECTION -->
+        <h2 class="section-header">✈️ Travel Days</h2>
+
         <!-- DAY 1 -->
-        <div class="day-block">
+        <div class="day-block transit">
             <div class="day-header">
-                <h3 class="day-title">Day 1: Thursday, Sept 17</h3>
-                <span class="day-label">Departure & Transit</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 1: Thursday, September 17</h3>
+                    <div class="day-details">
+                        <div>🚗 No car</div>
+                        <div>🏨 Travel day</div>
+                    </div>
+                </div>
+                <span class="day-label">Departure</span>
             </div>
-            <p>Travel day kicks off from Maryland up to PHL for the transatlantic leg.</p>
+            <p>Kick off your Italian adventure with a transatlantic journey from Philadelphia to Milan.</p>
             
             <div class="details-box">
                 <div class="timeline-substep">
-                    <strong>2:30 PM (EDT) — Depart Baltimore:</strong> Start drive up I-95 North to Philadelphia (~1h 45m drive time).
+                    <strong>2:30 PM EDT — Depart Baltimore:</strong> Drive north to Philadelphia International Airport via I-95 (~1h 45m).
                 </div>
                 <div class="timeline-substep">
-                    <strong>4:15 PM (EDT) — Airport Arrival:</strong> Pull into PHL airport parking. Allows a 45-minute window for airport parking lot shuttle transit and terminal check-in.
+                    <strong>4:15 PM EDT — Airport Arrival:</strong> Arrive at PHL with 45 minutes for parking shuttle and terminal check-in.
                 </div>
                 <div class="timeline-substep">
-                    <strong>5:00 PM (EDT) — Security Check:</strong> Enter lines at Terminal A. Solid 3-hour international security & boarding buffer window.
+                    <strong>5:00 PM EDT — Security Check:</strong> Begin international security screening for a comfortable boarding buffer.
                 </div>
                 <div class="timeline-substep">
-                    <strong>8:05 PM (EDT) — Flight Takeoff:</strong> American Airlines AA 298 (Economy). Overnight, 8h 00m flight duration. Seats: 18C, 20H. Dinner/Breakfast served[cite: 1].
+                    <strong>8:05 PM EDT — Flight Takeoff:</strong> American Airlines AA 298 (Economy, 8h flight). Dinner and breakfast service included.
                 </div>
             </div>
         </div>
@@ -177,127 +312,175 @@
         <!-- DAY 2 -->
         <div class="day-block">
             <div class="day-header">
-                <h3 class="day-title">Day 2: Friday, Sept 18</h3>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 2: Friday, September 18</h3>
+                    <div class="day-details">
+                        <div>🚗 No car</div>
+                        <div>🏨 Check in: Airbnb Florence</div>
+                    </div>
+                </div>
                 <span class="day-label">Arrival & Florence</span>
             </div>
             
             <div class="action-banner">
-                ⚠️ <strong>Action Item Needed:</strong> Still need to book the train tickets from Milan Centrale to Florence!
+                ⚠️ <strong>To-Do:</strong> Book high-speed train tickets from Milan Centrale to Florence!
             </div>
 
             <div class="details-box">
                 <div class="timeline-substep">
-                    <strong>10:05 AM (CEST) — Touchdown in Milan:</strong> Clear customs, passport control, and baggage retrieval at Milan Malpensa (MXP)[cite: 1].
+                    <strong>10:05 AM CEST — Touchdown in Milan:</strong> Clear customs and baggage at Milan Malpensa (MXP).
                 </div>
                 <div class="timeline-substep">
-                    <strong>11:00 AM - 12:00 PM (CEST) — Airport Express Train:</strong> Take the Malpensa Express train from the airport terminal straight into Milan Centre (Milano Centrale).
+                    <strong>11:00 AM – 12:00 PM CEST — Malpensa Express:</strong> Direct train from airport to Milano Centrale station.
                 </div>
                 <div class="timeline-substep">
-                    <strong>1:10 PM - 3:15 PM (CEST) — Train to Florence (Estimated/Unbooked):</strong> High-speed train ride from Milan Centre to Florence (Firenze Santa Maria Novella). 
+                    <strong>1:10 PM – 3:15 PM CEST — High-Speed Train to Florence:</strong> Freccia train from Milano Centrale to Firenze Santa Maria Novella.
                 </div>
                 <div class="timeline-substep">
-                    <strong>3:15 PM (CEST) — Taxi to Airbnb:</strong> Grab a quick 20-minute taxi ride from the Florence station to the apartment.
-                </div>
-                <div class="timeline-substep">
-                    <strong>3:35 PM (CEST) — Airbnb Check-in:</strong> Access the Florence apartment hosted by Maryam (Night 1 of 3).
+                    <strong>3:35 PM CEST — Accommodation Check-in:</strong> Settle into your Florence apartment (3 nights).
                 </div>
             </div>
         </div>
 
-        <!-- DAY 3 -->
+        <!-- DAY 3 & 4 -->
         <div class="day-block">
             <div class="day-header">
-                <h3 class="day-title">Day 3: Saturday, Sept 19</h3>
-                <span class="day-label">Florence Stay</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Days 3–4: September 19–20</h3>
+                    <div class="day-details">
+                        <div>🚗 No car</div>
+                        <div>🏨 Airbnb Florence</div>
+                    </div>
+                </div>
+                <span class="day-label">Florence Exploration</span>
             </div>
-            <p>Free exploration day in Florence. Ideal windows for checking out historical walks, local cafes, and market squares.</p>
+            <p>Two full days to explore the Renaissance capital. Wander through historical neighborhoods, visit iconic museums, enjoy authentic Tuscan cuisine, and discover hidden piazzas and artisan shops.</p>
+            
+            <div class="details-box">
+                <div class="timeline-substep">
+                    <strong>Sunday, 5:00 PM — Wine Tour (TBD):</strong> Time to be confirmed. Enjoy Tuscan wines and local vineyards.
+                </div>
+            </div>
         </div>
 
-        <!-- DAY 4 -->
-        <div class="day-block">
-            <div class="day-header">
-                <h3 class="day-title">Day 4: Sunday, Sept 20</h3>
-                <span class="day-label">Florence Stay</span>
-            </div>
-            <p>Full open day in Florence. Great window for targeted reservation dinners, city views, or group shopping walks.</p>
-        </div>
+        <!-- WEDDING SECTION -->
+        <h2 class="section-header">💒 Wedding Events</h2>
 
         <!-- DAY 5 -->
-        <div class="day-block wedding-theme">
+        <div class="day-block wedding">
             <div class="day-header">
-                <h3 class="day-title">Day 5: Monday, Sept 21</h3>
-                <span class="day-label">Wedding Event</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 5: Monday, September 21</h3>
+                    <div class="day-details">
+                        <div>🚗 Hertz rental pickup</div>
+                        <div>🏨 Check out: Airbnb Florence → Check in: Wedding Venue</div>
+                    </div>
+                </div>
+                <span class="day-label">Journey to Umbria</span>
             </div>
             <div class="details-box">
                 <div class="timeline-substep">
-                    <strong>8:30 AM — Car Rental Pickup:</strong> Grab the Hertz rental car (Jeep Avenger or similar) at Florence Airport (Via Palagio Degli Spini)[cite: 1].
+                    <strong>8:30 AM — Car Rental Pickup:</strong> Collect your rental car at Florence Airport.
                 </div>
                 <div class="timeline-substep">
-                    <strong>11:00 AM — Airbnb Checkout:</strong> Wrap up in Florence and hit the road driving south toward the Umbria region.
+                    <strong>11:00 AM — Checkout & Departure:</strong> Depart Florence and drive south toward the picturesque Umbria region.
                 </div>
                 <div class="timeline-substep">
-                    <strong>6:30 PM — Welcome Pizza Party:</strong> Meet at Villa Valentini Bonaparte's pool area to kick off wedding festivities[cite: 1].<br>
-                    <span class="badge-attire">Attire: Summer Whites (Linens, white cocktail clothing)[cite: 1]</span>
+                    <strong>6:30 PM — Welcome Pizza Party:</strong> Arrive at Villa Valentini Bonaparte. Kick off festivities poolside.
+                    <br><span class="badge-attire">Attire: Summer Whites</span>
                 </div>
             </div>
         </div>
 
         <!-- DAY 6 -->
-        <div class="day-block wedding-theme">
+        <div class="day-block wedding">
             <div class="day-header">
-                <h3 class="day-title">Day 6: Tuesday, Sept 22</h3>
-                <span class="day-label">The Wedding</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 6: Tuesday, September 22</h3>
+                    <div class="day-details">
+                        <div>🚗 Hertz rental</div>
+                        <div>🏨 Wedding Venue</div>
+                    </div>
+                </div>
+                <span class="day-label">The Wedding Ceremony</span>
             </div>
             <div class="details-box">
                 <div class="timeline-substep">
-                    <strong>Daytime — Prep & Relaxation:</strong> Free day on the villa grounds or exploring local Castiglione del Lago.
+                    <strong>Daytime — Preparation & Relaxation:</strong> Enjoy the villa grounds or explore nearby Castiglione del Lago.
                 </div>
                 <div class="timeline-substep">
-                    <strong>5:00 PM — Wedding Ceremony:</strong> Takes place in the Upper Garden of Villa Valentini Bonaparte[cite: 1]. Aperitif, formal dinner, and dancing to directly follow[cite: 1].<br>
-                    <span class="badge-attire">Attire: Summer Black Tie (Tuxedos & Long Dresses)[cite: 1]</span>
+                    <strong>5:00 PM — Ceremony:</strong> Villa Valentini Bonaparte's Upper Garden hosts the ceremony, followed by aperitivo, formal dinner, and dancing.
+                    <br><span class="badge-attire">Attire: Summer Black Tie</span>
                 </div>
             </div>
         </div>
 
         <!-- DAY 7 -->
-        <div class="day-block wedding-theme">
+        <div class="day-block wedding">
             <div class="day-header">
-                <h3 class="day-title">Day 7: Wednesday, Sept 23</h3>
-                <span class="day-label">Transit to Venice</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 7: Wednesday, September 23</h3>
+                    <div class="day-details">
+                        <div>🚗 Hertz rental → Return at Venice</div>
+                        <div>🏨 Check out: Wedding Venue → Check in: Airbnb Venice</div>
+                    </div>
+                </div>
+                <span class="day-label">Journey to Venice</span>
             </div>
             <div class="details-box">
                 <div class="timeline-substep">
-                    <strong>12:00 AM (Midnight) — Wedding Afterparty:</strong> Celebrations push straight into late-night/early morning hours[cite: 1].
+                    <strong>12:00 AM (Midnight) — Reception Continues:</strong> Celebrate into the early morning hours.
                 </div>
                 <div class="timeline-substep">
-                    <strong>Morning/Early Afternoon — Road Trip North:</strong> Clean up, pack out, and make the highway drive up toward Venice.
+                    <strong>Morning/Early Afternoon — Road Trip North:</strong> Pack up and begin the scenic drive toward Venice.
                 </div>
                 <div class="timeline-substep">
-                    <strong>3:30 PM — Car Drop-off:</strong> Return the Hertz rental car directly to Venice Marco Polo Airport (VCE)[cite: 1]. Transit onto the island to check into accommodations.
+                    <strong>3:30 PM — Car Return:</strong> Return rental at Venice Marco Polo Airport (VCE). Ferry to accommodations on the island.
                 </div>
             </div>
         </div>
+
+        <!-- VENICE SECTION -->
+        <h2 class="section-header">🚤 Venice & Return</h2>
 
         <!-- DAY 8 -->
         <div class="day-block">
             <div class="day-header">
-                <h3 class="day-title">Day 8: Thursday, Sept 24</h3>
-                <span class="day-label">Venice Stay</span>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 8: Thursday, September 24</h3>
+                    <div class="day-details">
+                        <div>🚗 No car</div>
+                        <div>🏨 Airbnb Venice</div>
+                    </div>
+                </div>
+                <span class="day-label">Venice Exploration</span>
             </div>
-            <p>Open exploration window inside Venice. Perfect for canal ferries, walking back alleys, and seafood dinners.</p>
+            <p>Explore the magical floating city. Experience canal ferries, navigate charming back streets, discover centuries-old bridges, and savor fresh seafood dinners along the waterways.</p>
         </div>
 
         <!-- DAY 9 -->
-        <div class="day-block">
+        <div class="day-block transit">
             <div class="day-header">
-                <h3 class="day-title">Day 9: Friday, Sept 25</h3>
+                <div class="day-title-section">
+                    <h3 class="day-title">Day 9: Friday, September 25</h3>
+                    <div class="day-details">
+                        <div>🚗 No car</div>
+                        <div>🏨 Check out: Airbnb Venice</div>
+                    </div>
+                </div>
                 <span class="day-label">Return Flight</span>
             </div>
             <div class="details-box">
-                <strong>American Airlines AA 715 (Economy)</strong><br>
-                • <strong>9:15 AM — Airport Arrival:</strong> Reach Venice Marco Polo Airport (VCE) 3 hours early.<br>
-                • <strong>12:15 PM (CEST) — Takeoff:</strong> Flight departs Venice[cite: 1]. Seats 20H, 18H[cite: 1]. Duration: 9h 15m[cite: 1].<br>
-                • <strong>3:30 PM (EDT) — Home Turf:</strong> Flight arrives back at Philadelphia International (PHL)[cite: 1].
+                <strong>American Airlines AA 715 (Economy)</strong>
+                <div class="timeline-substep">
+                    <strong>9:15 AM — Depart for Airport:</strong> Arrive at Venice Marco Polo (VCE) 3 hours before departure.
+                </div>
+                <div class="timeline-substep">
+                    <strong>12:15 PM CEST — Takeoff:</strong> Flight departs for Philadelphia. Duration: 9h 15m.
+                </div>
+                <div class="timeline-substep">
+                    <strong>3:30 PM EDT — Arrival at PHL:</strong> Welcome back to Philadelphia. Safe travels! 🇮🇹
+                </div>
             </div>
         </div>
 
@@ -305,7 +488,7 @@
 
     <!-- Countdown Script -->
     <script>
-        // Set to Baltimore departure window: Sept 17, 2026 at 2:30 PM EDT
+        // Set to Baltimore departure: September 17, 2026 at 2:30 PM EDT
         const targetDeparture = new Date("September 17, 2026 14:30:00 EDT").getTime();
 
         function updateCountdown() {
@@ -313,7 +496,7 @@
             const difference = targetDeparture - now;
 
             if (difference < 0) {
-                document.getElementById("countdown").innerHTML = "Trip has commenced! 🚗";
+                document.getElementById("countdown").innerHTML = "✈️ Buon viaggio! Your Italian adventure has begun!";
                 return;
             }
 
@@ -321,7 +504,7 @@
             const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 
-            document.getElementById("countdown").innerHTML = `🚗 ${days}d ${hours}h ${minutes}m until hitting the road from Baltimore!`;
+            document.getElementById("countdown").innerHTML = `🚗 ${days}d ${hours}h ${minutes}m until departure from Baltimore!`;
         }
 
         updateCountdown();
