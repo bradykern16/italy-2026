@@ -71,10 +71,54 @@
             color: var(--deep-navy);
         }
 
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            padding: 0 1.5rem;
+        }
+
+        .nav-btn {
+            background-color: var(--white-italy);
+            border: 2px solid var(--gold);
+            color: var(--deep-navy);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--gold);
+            color: var(--white-italy);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background-color: var(--green-italy);
+            color: var(--white-italy);
+            border-color: var(--green-italy);
+        }
+
         .container {
             max-width: 850px;
             margin: 3rem auto;
             padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         /* Section Headers */
@@ -244,6 +288,60 @@
             opacity: 0.9;
         }
 
+        /* Key Links Section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .link-card {
+            background: var(--white-italy);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            border-color: var(--green-italy);
+        }
+
+        .link-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .link-card p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .link-btn {
+            display: inline-block;
+            background-color: var(--green-italy);
+            color: var(--white-italy);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--green-italy);
+        }
+
+        .link-btn:hover {
+            background-color: var(--terra-cotta);
+            border-color: var(--terra-cotta);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
@@ -263,6 +361,19 @@
             .container {
                 padding: 0 1rem;
             }
+
+            .nav-tabs {
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -274,212 +385,251 @@
         <div id="countdown">Calculating departure countdown...</div>
     </header>
 
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="nav-btn active" onclick="switchTab(event, 'itinerary')">📅 Itinerary</button>
+        <button class="nav-btn" onclick="switchTab(event, 'links')">🔗 Key Links</button>
+    </div>
+
     <div class="container">
 
-        <!-- TRAVEL SECTION -->
-        <h2 class="section-header">✈️ Travel Days</h2>
+        <!-- ITINERARY TAB -->
+        <div id="itinerary" class="tab-content active">
 
-        <!-- DAY 1 -->
-        <div class="day-block transit">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 1: Thursday, September 17</h3>
-                    <div class="day-details">
-                        <div>🚗 No car</div>
-                        <div>🏨 Travel day</div>
+            <!-- TRAVEL SECTION -->
+            <h2 class="section-header">✈️ Travel Days</h2>
+
+            <!-- DAY 1 -->
+            <div class="day-block transit">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 1: Thursday, September 17</h3>
+                        <div class="day-details">
+                            <div>🚗 No car</div>
+                            <div>🏨 Travel day</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Departure</span>
+                </div>
+                <p>Kick off your Italian adventure with a transatlantic journey from Philadelphia to Milan.</p>
+                
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>2:30 PM EDT — Depart Baltimore:</strong> Drive north to Philadelphia International Airport via I-95 (~1h 45m).
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>4:15 PM EDT — Airport Arrival:</strong> Arrive at PHL with 45 minutes for parking shuttle and terminal check-in.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>5:00 PM EDT — Security Check:</strong> Begin international security screening for a comfortable boarding buffer.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>8:05 PM EDT — Flight Takeoff:</strong> American Airlines AA 298 (Economy, 8h flight). Dinner and breakfast service included.
                     </div>
                 </div>
-                <span class="day-label">Departure</span>
             </div>
-            <p>Kick off your Italian adventure with a transatlantic journey from Philadelphia to Milan.</p>
+
+            <!-- DAY 2 -->
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 2: Friday, September 18</h3>
+                        <div class="day-details">
+                            <div>🚗 No car</div>
+                            <div>🏨 Check in: Airbnb Florence</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Arrival & Florence</span>
+                </div>
+                
+                <div class="action-banner">
+                    ⚠️ <strong>To-Do:</strong> Book high-speed train tickets from Milan Centrale to Florence!
+                </div>
+
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>10:05 AM CEST — Touchdown in Milan:</strong> Clear customs and baggage at Milan Malpensa (MXP).
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>11:00 AM – 12:00 PM CEST — Malpensa Express:</strong> Direct train from airport to Milano Centrale station.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>1:10 PM – 3:15 PM CEST — High-Speed Train to Florence:</strong> Freccia train from Milano Centrale to Firenze Santa Maria Novella.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>3:35 PM CEST — Accommodation Check-in:</strong> Settle into your Florence apartment (3 nights).
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 3 & 4 -->
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Days 3–4: September 19–20</h3>
+                        <div class="day-details">
+                            <div>🚗 No car</div>
+                            <div>🏨 Airbnb Florence</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Florence Exploration</span>
+                </div>
+                <p>Two full days to explore the Renaissance capital. Wander through historical neighborhoods, visit iconic museums, enjoy authentic Tuscan cuisine, and discover hidden piazzas and art.</p>
+                
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>Sunday, 5:00 PM — Wine Tour (TBD):</strong> Time to be confirmed. Enjoy Tuscan wines and local vineyards.
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEDDING SECTION -->
+            <h2 class="section-header">💒 Wedding Events</h2>
+
+            <!-- DAY 5 -->
+            <div class="day-block wedding">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 5: Monday, September 21</h3>
+                        <div class="day-details">
+                            <div>🚗 Hertz rental pickup</div>
+                            <div>🏨 Check out: Airbnb Florence → Check in: Wedding Venue</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Journey to Umbria</span>
+                </div>
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>8:30 AM — Car Rental Pickup:</strong> Collect your rental car at Florence Airport.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>11:00 AM — Checkout & Departure:</strong> Depart Florence and drive south toward the picturesque Umbria region.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>6:30 PM — Welcome Pizza Party:</strong> Arrive at Villa Valentini Bonaparte. Kick off festivities poolside.
+                        <br><span class="badge-attire">Attire: Summer Whites</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 6 -->
+            <div class="day-block wedding">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 6: Tuesday, September 22</h3>
+                        <div class="day-details">
+                            <div>🚗 Hertz rental</div>
+                            <div>🏨 Wedding Venue</div>
+                        </div>
+                    </div>
+                    <span class="day-label">The Wedding Ceremony</span>
+                </div>
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>Daytime — Preparation & Relaxation:</strong> Enjoy the villa grounds or explore nearby Castiglione del Lago.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>5:00 PM — Ceremony:</strong> Villa Valentini Bonaparte's Upper Garden hosts the ceremony, followed by aperitivo, formal dinner, and dancing.
+                        <br><span class="badge-attire">Attire: Summer Black Tie</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 7 -->
+            <div class="day-block wedding">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 7: Wednesday, September 23</h3>
+                        <div class="day-details">
+                            <div>🚗 Hertz rental → Return at Venice</div>
+                            <div>🏨 Check out: Wedding Venue → Check in: Airbnb Venice</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Journey to Venice</span>
+                </div>
+                <div class="details-box">
+                    <div class="timeline-substep">
+                        <strong>12:00 AM (Midnight) — Reception Continues:</strong> Celebrate into the early morning hours.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>Morning/Early Afternoon — Road Trip North:</strong> Pack up and begin the scenic drive toward Venice.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>3:30 PM — Car Return:</strong> Return rental at Venice Marco Polo Airport (VCE). Ferry to accommodations on the island.
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENICE SECTION -->
+            <h2 class="section-header">🚤 Venice & Return</h2>
+
+            <!-- DAY 8 -->
+            <div class="day-block">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 8: Thursday, September 24</h3>
+                        <div class="day-details">
+                            <div>🚗 No car</div>
+                            <div>🏨 Airbnb Venice</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Venice Exploration</span>
+                </div>
+                <p>Explore the magical floating city. Experience canal ferries, navigate charming back streets, discover centuries-old bridges, and savor fresh seafood dinners along the waterways.</p>
+            </div>
+
+            <!-- DAY 9 -->
+            <div class="day-block transit">
+                <div class="day-header">
+                    <div class="day-title-section">
+                        <h3 class="day-title">Day 9: Friday, September 25</h3>
+                        <div class="day-details">
+                            <div>🚗 No car</div>
+                            <div>🏨 Check out: Airbnb Venice</div>
+                        </div>
+                    </div>
+                    <span class="day-label">Return Flight</span>
+                </div>
+                <div class="details-box">
+                    <strong>American Airlines AA 715 (Economy)</strong>
+                    <div class="timeline-substep">
+                        <strong>9:15 AM — Depart for Airport:</strong> Arrive at Venice Marco Polo (VCE) 3 hours before departure.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>12:15 PM CEST — Takeoff:</strong> Flight departs for Philadelphia. Duration: 9h 15m.
+                    </div>
+                    <div class="timeline-substep">
+                        <strong>3:30 PM EDT — Arrival at PHL:</strong> Welcome back to Philadelphia. Safe travels! 🇮🇹
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- KEY LINKS TAB -->
+        <div id="links" class="tab-content">
+            <h2 class="section-header">🔗 Key Links</h2>
             
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>2:30 PM EDT — Depart Baltimore:</strong> Drive north to Philadelphia International Airport via I-95 (~1h 45m).
+            <div class="links-grid">
+                <!-- Splitwise Link -->
+                <div class="link-card">
+                    <h3>💰 Splitwise</h3>
+                    <p>Track shared expenses and settle up with the group for the trip.</p>
+                    <a href="https://splitwise.com" class="link-btn" target="_blank">Open Splitwise</a>
                 </div>
-                <div class="timeline-substep">
-                    <strong>4:15 PM EDT — Airport Arrival:</strong> Arrive at PHL with 45 minutes for parking shuttle and terminal check-in.
-                </div>
-                <div class="timeline-substep">
-                    <strong>5:00 PM EDT — Security Check:</strong> Begin international security screening for a comfortable boarding buffer.
-                </div>
-                <div class="timeline-substep">
-                    <strong>8:05 PM EDT — Flight Takeoff:</strong> American Airlines AA 298 (Economy, 8h flight). Dinner and breakfast service included.
-                </div>
-            </div>
-        </div>
 
-        <!-- DAY 2 -->
-        <div class="day-block">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 2: Friday, September 18</h3>
-                    <div class="day-details">
-                        <div>🚗 No car</div>
-                        <div>🏨 Check in: Airbnb Florence</div>
-                    </div>
+                <!-- Airbnb Link -->
+                <div class="link-card">
+                    <h3>🏨 Airbnb Bookings</h3>
+                    <p>View your Florence and Venice accommodations.</p>
+                    <a href="https://www.airbnb.com" class="link-btn" target="_blank">View on Airbnb</a>
                 </div>
-                <span class="day-label">Arrival & Florence</span>
-            </div>
-            
-            <div class="action-banner">
-                ⚠️ <strong>To-Do:</strong> Book high-speed train tickets from Milan Centrale to Florence!
-            </div>
 
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>10:05 AM CEST — Touchdown in Milan:</strong> Clear customs and baggage at Milan Malpensa (MXP).
-                </div>
-                <div class="timeline-substep">
-                    <strong>11:00 AM – 12:00 PM CEST — Malpensa Express:</strong> Direct train from airport to Milano Centrale station.
-                </div>
-                <div class="timeline-substep">
-                    <strong>1:10 PM – 3:15 PM CEST — High-Speed Train to Florence:</strong> Freccia train from Milano Centrale to Firenze Santa Maria Novella.
-                </div>
-                <div class="timeline-substep">
-                    <strong>3:35 PM CEST — Accommodation Check-in:</strong> Settle into your Florence apartment (3 nights).
-                </div>
-            </div>
-        </div>
-
-        <!-- DAY 3 & 4 -->
-        <div class="day-block">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Days 3–4: September 19–20</h3>
-                    <div class="day-details">
-                        <div>🚗 No car</div>
-                        <div>🏨 Airbnb Florence</div>
-                    </div>
-                </div>
-                <span class="day-label">Florence Exploration</span>
-            </div>
-            <p>Two full days to explore the Renaissance capital. Wander through historical neighborhoods, visit iconic museums, enjoy authentic Tuscan cuisine, and discover hidden piazzas and artisan shops.</p>
-            
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>Sunday, 5:00 PM — Wine Tour (TBD):</strong> Time to be confirmed. Enjoy Tuscan wines and local vineyards.
-                </div>
-            </div>
-        </div>
-
-        <!-- WEDDING SECTION -->
-        <h2 class="section-header">💒 Wedding Events</h2>
-
-        <!-- DAY 5 -->
-        <div class="day-block wedding">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 5: Monday, September 21</h3>
-                    <div class="day-details">
-                        <div>🚗 Hertz rental pickup</div>
-                        <div>🏨 Check out: Airbnb Florence → Check in: Wedding Venue</div>
-                    </div>
-                </div>
-                <span class="day-label">Journey to Umbria</span>
-            </div>
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>8:30 AM — Car Rental Pickup:</strong> Collect your rental car at Florence Airport.
-                </div>
-                <div class="timeline-substep">
-                    <strong>11:00 AM — Checkout & Departure:</strong> Depart Florence and drive south toward the picturesque Umbria region.
-                </div>
-                <div class="timeline-substep">
-                    <strong>6:30 PM — Welcome Pizza Party:</strong> Arrive at Villa Valentini Bonaparte. Kick off festivities poolside.
-                    <br><span class="badge-attire">Attire: Summer Whites</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- DAY 6 -->
-        <div class="day-block wedding">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 6: Tuesday, September 22</h3>
-                    <div class="day-details">
-                        <div>🚗 Hertz rental</div>
-                        <div>🏨 Wedding Venue</div>
-                    </div>
-                </div>
-                <span class="day-label">The Wedding Ceremony</span>
-            </div>
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>Daytime — Preparation & Relaxation:</strong> Enjoy the villa grounds or explore nearby Castiglione del Lago.
-                </div>
-                <div class="timeline-substep">
-                    <strong>5:00 PM — Ceremony:</strong> Villa Valentini Bonaparte's Upper Garden hosts the ceremony, followed by aperitivo, formal dinner, and dancing.
-                    <br><span class="badge-attire">Attire: Summer Black Tie</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- DAY 7 -->
-        <div class="day-block wedding">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 7: Wednesday, September 23</h3>
-                    <div class="day-details">
-                        <div>🚗 Hertz rental → Return at Venice</div>
-                        <div>🏨 Check out: Wedding Venue → Check in: Airbnb Venice</div>
-                    </div>
-                </div>
-                <span class="day-label">Journey to Venice</span>
-            </div>
-            <div class="details-box">
-                <div class="timeline-substep">
-                    <strong>12:00 AM (Midnight) — Reception Continues:</strong> Celebrate into the early morning hours.
-                </div>
-                <div class="timeline-substep">
-                    <strong>Morning/Early Afternoon — Road Trip North:</strong> Pack up and begin the scenic drive toward Venice.
-                </div>
-                <div class="timeline-substep">
-                    <strong>3:30 PM — Car Return:</strong> Return rental at Venice Marco Polo Airport (VCE). Ferry to accommodations on the island.
-                </div>
-            </div>
-        </div>
-
-        <!-- VENICE SECTION -->
-        <h2 class="section-header">🚤 Venice & Return</h2>
-
-        <!-- DAY 8 -->
-        <div class="day-block">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 8: Thursday, September 24</h3>
-                    <div class="day-details">
-                        <div>🚗 No car</div>
-                        <div>🏨 Airbnb Venice</div>
-                    </div>
-                </div>
-                <span class="day-label">Venice Exploration</span>
-            </div>
-            <p>Explore the magical floating city. Experience canal ferries, navigate charming back streets, discover centuries-old bridges, and savor fresh seafood dinners along the waterways.</p>
-        </div>
-
-        <!-- DAY 9 -->
-        <div class="day-block transit">
-            <div class="day-header">
-                <div class="day-title-section">
-                    <h3 class="day-title">Day 9: Friday, September 25</h3>
-                    <div class="day-details">
-                        <div>🚗 No car</div>
-                        <div>🏨 Check out: Airbnb Venice</div>
-                    </div>
-                </div>
-                <span class="day-label">Return Flight</span>
-            </div>
-            <div class="details-box">
-                <strong>American Airlines AA 715 (Economy)</strong>
-                <div class="timeline-substep">
-                    <strong>9:15 AM — Depart for Airport:</strong> Arrive at Venice Marco Polo (VCE) 3 hours before departure.
-                </div>
-                <div class="timeline-substep">
-                    <strong>12:15 PM CEST — Takeoff:</strong> Flight departs for Philadelphia. Duration: 9h 15m.
-                </div>
-                <div class="timeline-substep">
-                    <strong>3:30 PM EDT — Arrival at PHL:</strong> Welcome back to Philadelphia. Safe travels! 🇮🇹
+                <!-- Wedding Website -->
+                <div class="link-card">
+                    <h3>💍 Wedding Website</h3>
+                    <p>Details about Tori & Corey's wedding celebration.</p>
+                    <a href="https://toriandocorey.com" class="link-btn" target="_blank">Tori & Corey</a>
                 </div>
             </div>
         </div>
@@ -505,6 +655,23 @@
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 
             document.getElementById("countdown").innerHTML = `🚗 ${days}d ${hours}h ${minutes}m until departure from Baltimore!`;
+        }
+
+        // Tab Switching Function
+        function switchTab(event, tabName) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Show the selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
         }
 
         updateCountdown();
