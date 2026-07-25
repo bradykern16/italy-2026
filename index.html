@@ -355,6 +355,46 @@
             border-color: var(--terra-cotta);
         }
 
+        /* Market & Activity Section Styling */
+        .activity-section {
+            background: var(--light-cream);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .activity-section h4 {
+            color: var(--deep-navy);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .activity-section p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .market-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .market-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .market-list li:before {
+            content: '🎫';
+            position: absolute;
+            left: 0;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
@@ -489,18 +529,67 @@
                             <div>🏨 Airbnb Florence</div>
                         </div>
                     </div>
-                    <span class="day-label">Florence Exploration</span>
+                    <span class="day-label">Markets & Florence</span>
                 </div>
-                <p>Explore the Renaissance capital. Wander through historical neighborhoods, visit iconic museums, enjoy authentic Tuscan cuisine, and discover hidden piazzas and monuments.</p>
+                <p>Explore Florence's vibrant markets in the morning, then enjoy the Renaissance capital's wonders throughout the day before an unforgettable sunset and evening out.</p>
                 
                 <div class="details-box">
-                    <div class="timeline-substep">
-                        <strong>Daytime — Florence Sightseeing:</strong> Discover the city's world-renowned museums, galleries, and architectural wonders at your own pace.
+                    <h4 style="color: var(--deep-navy); margin-bottom: 1rem;">🏛️ Morning: Antique & Weekend Markets (9:00 AM – 2:00 PM)</h4>
+                    
+                    <div class="activity-section">
+                        <h4>📍 Option 1: Indipendenza Antiquaria (Piazza della Indipendenza)</h4>
+                        <p><strong>When:</strong> Saturday, 9:00 AM – 7:00 PM</p>
+                        <p><strong>What to find:</strong> Vintage jewelry, antique furniture, rare prints, art, old watches, vintage fashion, porcelain, and mid-century curiosities.</p>
+                        <p><strong>Vibe:</strong> Florence's premier monthly outdoor antique fair with over 100 vendors set up under the trees.</p>
+                    </div>
+
+                    <div class="activity-section">
+                        <h4>📍 Option 2: Fortezza da Basso Antique Market (Giardini della Fortezza)</h4>
+                        <p><strong>When:</strong> Saturday, 9:00 AM – 7:30 PM</p>
+                        <p><strong>What to find:</strong> Collectibles, vintage books, historical artifacts, furniture, paintings, and Tuscan home decor.</p>
+                        <p><strong>Vibe:</strong> Another large monthly antique fair set around a small lake in the gardens of the 16th-century Medicean fortress.</p>
+                    </div>
+
+                    <div class="activity-section">
+                        <h4>📍 Option 3: Classic Permanent Markets</h4>
+                        <ul class="market-list">
+                            <li><strong>Mercato del Porcellino (Piazza del Mercato Nuovo):</strong> Famous for leather bags, belts, jackets, and souvenirs around the bronze wild boar statue.</li>
+                            <li><strong>Mercato Centrale / San Lorenzo Market:</strong> Outdoor leather stalls & historic indoor food hall upstairs (open daily for food, wine, and local specialties).</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-substep" style="margin-top: 1.5rem;">
+                        <strong>2:00 PM – Late Afternoon:</strong> Explore Florence's museums, galleries, and architectural wonders at your own pace. Rest, lunch, and prepare for the evening.
                     </div>
                 </div>
 
-                <div class="placeholder-box">
-                    🍽️ Dinner (TBD)
+                <div class="details-box" style="margin-top: 1.5rem; background: rgba(184, 98, 59, 0.05); border: 2px solid var(--terra-cotta);">
+                    <h4 style="color: var(--terra-cotta); margin-bottom: 1rem;">🌇 Evening: Sunset to Nightfall at Piazzale Michelangelo & San Miniato</h4>
+                    
+                    <div class="timeline-substep">
+                        <strong>Before Sunset — Piazzale Michelangelo:</strong> Climb up to this iconic viewpoint to watch the sun dip behind the Ponte Vecchio and light up the Duomo. Stay after dark when the city's monuments light up—it's one of Europe's most iconic night views.
+                    </div>
+                    
+                    <div class="timeline-substep">
+                        <strong>Pro-Tip:</strong> Walk 5 minutes further up the hill to San Miniato al Monte. It's much quieter, less crowded, and offers an even higher viewpoint over the illuminated city.
+                    </div>
+
+                    <h4 style="color: var(--terra-cotta); margin-top: 1.5rem; margin-bottom: 1rem;">🍹 Dinner & Nightlife: Piazza Hopping & Oltrarno</h4>
+                    
+                    <div class="activity-section">
+                        <h4>📍 Piazza Santo Spirito</h4>
+                        <p><strong>Location:</strong> Across the river in the bohemian Oltrarno district.</p>
+                        <p><strong>Vibe:</strong> Packed with locals, student crowds, outdoor bars, and live street musicians hanging out on the church steps.</p>
+                    </div>
+
+                    <div class="activity-section">
+                        <h4>📍 Piazza Sant'Ambrogio</h4>
+                        <p><strong>Vibe:</strong> Great for a more authentic, local food-and-cocktail experience away from tourist-heavy areas.</p>
+                    </div>
+
+                    <div class="timeline-substep" style="margin-top: 1rem;">
+                        <strong>Evening:</strong> Enjoy dinner and cocktails at one of these vibrant piazzas. Experience the lively Florentine nightlife culture!
+                    </div>
                 </div>
             </div>
 
